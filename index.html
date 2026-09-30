@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oladapo Afuwape — Email Marketing & Lifecycle Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12172B; --surface:#1B2140; --surface-2:#212747;
+    --ink:#F3EFE6; --muted:#9BA3C4; --gold:#E8B454; --coral:#E8684A;
+    --line:rgba(243,239,230,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:500; line-height:1.15;}
+  a{color:inherit;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+  header{padding:28px 0; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line);}
+  .logo{font-family:'Fraunces',serif; font-size:1.3rem;}
+  .logo span{color:var(--gold);}
+  nav a{margin-left:24px; font-size:0.92rem; color:var(--muted); text-decoration:none;}
+  nav a:hover{color:var(--ink);}
+
+  .hero{padding:44px 0 80px;}
+  .hero p.kicker{color:var(--gold); font-size:0.95rem; margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem); max-width:14ch; margin-bottom:22px;}
+  .hero p.lead{color:var(--muted); font-size:1.15rem; max-width:52ch; margin-bottom:36px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{display:inline-block; padding:13px 26px; border-radius:2px; text-decoration:none; font-size:0.95rem; font-weight:500;}
+  .btn-primary{background:var(--gold); color:#161B33;}
+  .btn-ghost{border:1px solid var(--line); color:var(--ink);}
+
+  section{padding:72px 0; border-top:1px solid var(--line);}
+  .section-head{margin-bottom:44px;}
+  .section-head p.num{color:var(--gold); font-size:0.85rem; margin-bottom:8px;}
+  .section-head h2{font-size:1.9rem;}
+
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .card{background:var(--surface); padding:28px 24px; border-radius:2px;}
+  .card h3{font-size:1.15rem; margin-bottom:10px; font-weight:600; font-family:'Inter',sans-serif;}
+  .card p{color:var(--muted); font-size:0.95rem;}
+
+  .flow{display:flex; flex-direction:column; gap:0;}
+  .flow-step{display:grid; grid-template-columns:56px 1fr; gap:20px; padding:22px 0; position:relative;}
+  .flow-step:not(:last-child)::after{
+    content:''; position:absolute; left:27px; top:56px; bottom:-6px; width:1px; background:var(--line);
+  }
+  .flow-num{width:56px; height:56px; border-radius:50%; background:var(--surface-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; color:var(--gold); flex-shrink:0;}
+  .flow-step h3{font-size:1.1rem; margin-bottom:6px; font-weight:600; font-family:'Inter',sans-serif;}
+  .flow-step p{color:var(--muted); font-size:0.95rem; max-width:56ch;}
+  .flow-tag{display:inline-block; margin-top:10px; font-size:0.8rem; color:var(--coral);}
+
+  .stack{display:flex; flex-wrap:wrap; gap:10px;}
+  .pill{border:1px solid var(--line); padding:8px 16px; border-radius:20px; font-size:0.88rem; color:var(--muted);}
+
+  .about p{color:var(--muted); max-width:60ch; margin-bottom:16px; font-size:1.02rem;}
+  .about strong{color:var(--ink); font-weight:600;}
+
+  footer{padding:48px 0 64px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer p.name{color:var(--ink); font-size:1.05rem; font-weight:600;}
+  footer .links{display:flex; gap:6px; flex-wrap:wrap; font-size:0.9rem;}
+  footer a{color:var(--gold); text-decoration:none;}
+
+  .case-note{background:var(--surface-2); border-left:2px solid var(--gold); padding:16px 20px; font-size:0.9rem; color:var(--muted); margin-bottom:36px;}
+  .case-note strong{color:var(--ink);}
+  .case-sub{margin:48px 0 20px;}
+  .case-sub h3{font-size:1.3rem; margin-bottom:6px;}
+  .case-sub p.meta{color:var(--gold); font-size:0.85rem; margin-bottom:14px;}
+  .case-sub p{color:var(--muted); font-size:0.97rem; max-width:64ch; margin-bottom:14px;}
+  .shots{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin:14px 0;}
+  .shot{width:100%; min-height:160px; border:1px dashed rgba(18,23,43,0.18); border-radius:2px; background:#EEE3D2;
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:10px;
+    color:#6B6150; font-size:0.78rem;}
+  .shot img{width:100%; height:100%; object-fit:cover; border-radius:2px;}
+  .shot.wide{grid-column:1/-1; min-height:220px;}
+
+  details.deep{background:var(--surface); border-radius:2px; margin-bottom:12px;}
+  details.deep summary{padding:18px 22px; cursor:pointer; font-family:'Inter',sans-serif; font-weight:600; font-size:0.98rem; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  details.deep summary::after{content:'+'; color:var(--gold); font-size:1.3rem; font-weight:400;}
+  details.deep[open] summary::after{content:'−';}
+  details.deep .deep-body{padding:0 22px 22px;}
+  details.deep .deep-body h4{font-size:0.95rem; color:var(--ink); margin:18px 0 8px; font-family:'Inter',sans-serif;}
+  details.deep .deep-body h4:first-child{margin-top:0;}
+  details.deep .deep-body p, details.deep .deep-body li{color:var(--muted); font-size:0.92rem; margin-bottom:8px;}
+  details.deep .deep-body ul{padding-left:20px;}
+  details.deep .deep-body strong{color:var(--ink);}
+
+  .metric-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-top:8px;}
+  .metric{background:var(--bg); border:1px solid var(--line); padding:14px 16px; border-radius:2px;}
+  .metric .num{font-family:'Fraunces',serif; color:var(--gold); font-size:1.3rem;}
+  .metric .lbl{font-size:0.8rem; color:var(--muted); margin-top:2px;}
+
+  .closing-note{font-size:0.92rem; color:var(--muted); border-top:1px solid var(--line); padding-top:24px; margin-top:36px;}
+
+  .audit-card{background:var(--surface); padding:26px 24px; border-radius:2px; margin-bottom:16px;}
+  .audit-card p.meta{color:var(--gold); font-size:0.82rem; margin-bottom:6px;}
+  .audit-card h3{font-size:1.2rem; margin-bottom:12px;}
+  .audit-card > p{color:var(--muted); font-size:0.95rem; margin-bottom:16px;}
+  .audit-card details.deep{background:var(--surface-2);}
+
+  .avatar{width:72px; height:72px; border-radius:50%; border:1px dashed var(--line); background:var(--surface);
+    display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.62rem; text-align:center;
+    overflow:hidden; margin-bottom:22px;}
+  .avatar img{width:100%; height:100%; object-fit:cover;}
+
+  @media(max-width:720px){
+    .services{grid-template-columns:1fr;}
+    header nav{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Oladapo Afuwape<span>.</span></div>
+    <nav>
+      <a href="#case-study">Case Study</a>
+      <a href="#audits">Audits</a>
+      <a href="#work">How I Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="border-top:none;">
+    <div class="avatar">photo.jpg</div>
+    <p class="kicker">Email & Lifecycle Marketing</p>
+    <h1>I turn new subscribers into first-time customers.</h1>
+    <p class="lead">I build welcome sequences and lifecycle automations for consumer brands, the emails that fire the moment someone signs up, and the flows that keep them coming back. HubSpot certified, ESP-agnostic.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:afuwapeoladapo@gmail.com">Start a project</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/oladapo-afuwape-509271327" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://twitter.com/bluulifecycle" target="_blank" rel="noopener">Twitter</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-head">
+      <p class="num">Services</p>
+      <h2>What I build</h2>
+    </div>
+    <div class="services">
+      <div class="card">
+        <h3>Welcome Sequences</h3>
+        <p>3-part sequences engineered to convert a new subscriber into a first purchase, timed, tested, and written to match your brand voice.</p>
+      </div>
+      <div class="card">
+        <h3>Lifecycle Automation</h3>
+        <p>Post-purchase, browse abandonment, win-back, and VIP flows that run quietly in the background and keep revenue compounding.</p>
+      </div>
+      <div class="card">
+        <h3>Discount Gating</h3>
+        <p>Dynamic offer logic so discounts go to the subscribers who need the nudge, not everyone, and not forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-study">
+    <div class="section-head">
+      <p class="num">Case Study</p>
+      <h2>Terra &amp; Co. — Welcome Sequence</h2>
+    </div>
+
+    <div class="case-note"><strong>Note:</strong> Terra &amp; Co. is a self-initiated concept project built to demonstrate welcome-sequence strategy and lifecycle automation skills. The brand, testimonials, and metrics referenced are illustrative, not results from a live client account.</div>
+
+    <p style="color:var(--muted); max-width:64ch; margin-bottom:4px;"><strong style="color:var(--ink);">Brand:</strong> Terra & Co., small-batch, natural skincare</p>
+    <p style="color:var(--muted); max-width:64ch; margin-bottom:4px;"><strong style="color:var(--ink);">Founder:</strong> Mary Whitfield</p>
+    <p style="color:var(--muted); max-width:64ch; margin-bottom:4px;"><strong style="color:var(--ink);">Hero product:</strong> Daily Glow Serum</p>
+    <p style="color:var(--muted); max-width:64ch; margin-bottom:12px;"><strong style="color:var(--ink);">Positioning:</strong> "Simple, natural, effective"</p>
+
+    <div class="case-sub">
+      <h3>1. The Opt-In Experience</h3>
+      <p>Minimal form fields built to lower conversion friction while showcasing core proof points.</p>
+      <div class="shots">
+        <div class="shot">Opt-in form 1<br><small>case-optin-1.jpg</small></div>
+        <div class="shot">Opt-in form 2<br><small>case-optin-2.jpg</small></div>
+        <div class="shot">Opt-in form 3<br><small>case-optin-3.jpg</small></div>
+        <div class="shot">Opt-in form 4<br><small>case-optin-4.jpg</small></div>
+        <div class="shot">Opt-in form 5<br><small>case-optin-5.jpg</small></div>
+      </div>
+    </div>
+
+    <div class="case-sub">
+      <h3>2. The 3-Part Automated Welcome Series</h3>
+
+      <p class="meta" style="margin-top:20px;">EMAIL 1 — Brand Discovery &amp; Founder Welcome</p>
+      <p><strong style="color:var(--ink);">Subject:</strong> Welcome to Terra & Co.<br><strong style="color:var(--ink);">Preview:</strong> Here's why we started Terra&Co.</p>
+      <p>Matched the email templates to the landing page (same rounded corners, same button style) so the experience feels continuous from click to inbox. Used double opt-in and held the discount code until after verification, which keeps the list clean and stops the code from being scraped before someone actually subscribes. Email 1 leads with the founder's story and the product itself before mentioning the discount, so the brand feels personal rather than promotional from the first message.</p>
+      <div class="shots"><div class="shot wide">Email 1 screenshot<br><small>case-email1.jpg</small></div></div>
+
+      <p class="meta" style="margin-top:28px;">EMAIL 2 — Hero Product Focus &amp; Social Proof</p>
+      <p><strong style="color:var(--ink);">Subject:</strong> The one bottle that replaced two.<br><strong style="color:var(--ink);">Preview:</strong> Lisa's bathroom shelf used to look like a Sephora aisle.</p>
+      <p>Shifts from brand intro to hero-product positioning, introducing the Daily Glow Serum alongside real customer reviews to address purchase hesitation, highlight routine simplification, and drive consideration through a dedicated CTA.</p>
+      <div class="shots"><div class="shot wide">Email 2 screenshot<br><small>case-email2.jpg</small></div></div>
+
+      <p class="meta" style="margin-top:28px;">EMAIL 3 — Offer Introduction &amp; Reassurance Close</p>
+      <p><strong style="color:var(--ink);">Subject:</strong> Still thinking it over?<br><strong style="color:var(--ink);">Preview:</strong> Your 10% off hasn't gone anywhere.</p>
+      <p>Targets non-converters still in the sequence 4 days post-signup: a gentle nudge to redeem the 10% discount promised on the opt-in confirmation before the welcome window closes.</p>
+      <div class="shots"><div class="shot wide">Email 3 screenshot<br><small>case-email3.jpg</small></div></div>
+    </div>
+
+    <div class="case-sub">
+      <h3>3–5. Architecture, Segmentation &amp; Results Targets</h3>
+      <p>The deeper strategy behind the sequence. Tap to expand any section.</p>
+
+      <details class="deep">
+        <summary>Technical Architecture & Backend Setup</summary>
+        <div class="deep-body">
+          <div class="shots"><div class="shot wide">Automation map<br><small>case-automation-map-1.jpg</small></div><div class="shot wide">Automation map 2<br><small>case-automation-map-2.jpg</small></div></div>
+          <h4>Sequence mechanics</h4>
+          <ul>
+            <li><strong>Trigger:</strong> form submission adds the subscriber to the welcome sequence.</li>
+            <li><strong>Cadence:</strong> Email 1 immediately → Email 2 at +2 days → Email 3 at +2 days.</li>
+            <li><strong>Exit logic:</strong> buyer status removes customers from non-buyer incentive reminders.</li>
+            <li><strong>Consent & deliverability:</strong> double opt-in verifies consent and keeps hard bounces under 0.5%, protecting sender reputation.</li>
+          </ul>
+          <h4>Deliverability & compliance</h4>
+          <p>Mobile-first, single-column templates with live HTML text and a balanced text-to-image ratio. Image-heavy emails often get routed to Gmail's Promotions tab, so this was a deliberate choice to stay in the primary inbox. CAN-SPAM/GDPR considerations included sender ID, physical address, unsubscribe function, and consent handling.</p>
+        </div>
+      </details>
+
+      <details class="deep">
+        <summary>Segmentation & Lifecycle Strategy</summary>
+        <div class="deep-body">
+          <div class="shots"><div class="shot wide">Segmentation setup<br><small>case-segmentation.jpg</small></div></div>
+          <h4>Primary segments</h4>
+          <ul>
+            <li><strong>New Subscribers:</strong> entered through the 10% first-order offer</li>
+            <li><strong>Engaged Non-Buyers:</strong> interacted with the sequence, haven't purchased</li>
+            <li><strong>Customers:</strong> completed a purchase, exit acquisition messaging</li>
+            <li><strong>Product-Interested Subscribers:</strong> shown interest via product-specific engagement</li>
+            <li><strong>Re-Engagement Audience:</strong> declining engagement, needs a different approach</li>
+          </ul>
+          <h4>Lifecycle principle</h4>
+          <p>Subscriber behavior determines what they receive next: Subscriber → Engaged Prospect → Customer → Retention. Once someone converts, they stop receiving first-purchase incentives. Messaging matches actual status, not signup date.</p>
+          <h4>Proposed post-purchase flow</h4>
+          <p>First Purchase → Product Education → Usage/Value Reinforcement → Cross-Sell → Repeat Purchase → Re-Engagement, driven by purchase data and engagement signals.</p>
+        </div>
+      </details>
+
+      <details class="deep">
+        <summary>Testing & Optimization Framework</summary>
+        <div class="deep-body">
+          <p>Subject lines, send timing, and offer framing would be tested and evaluated by conversion and revenue, not opens alone. Open rate is useful for diagnosing problems, not for reflecting real performance.</p>
+          <h4>Variables to test</h4>
+          <p>Subject-line positioning, offer framing, CTA language, send timing, product education angle, social-proof placement, segmentation criteria.</p>
+          <h4>Primary evaluation metrics</h4>
+          <p>First-order conversion rate, revenue per recipient, click-through rate, conversion from engaged non-buyers, unsubscribe rate, repeat-purchase rate.</p>
+        </div>
+      </details>
+
+      <details class="deep">
+        <summary>Pre-Launch Performance Targets</summary>
+        <div class="deep-body">
+          <p>Based on typical welcome-series benchmarks for DTC/skincare brands, not measured campaign results.</p>
+          <div class="metric-grid">
+            <div class="metric"><div class="num">≥3.5%</div><div class="lbl">First-order conversion</div></div>
+            <div class="metric"><div class="num">≥55% / ≥12%</div><div class="lbl">Email 1 open / CTR</div></div>
+            <div class="metric"><div class="num">≥42% / ≥8%</div><div class="lbl">Email 2 open / CTR</div></div>
+            <div class="metric"><div class="num">≥38% / ≥10%</div><div class="lbl">Email 3 open / CTR</div></div>
+            <div class="metric"><div class="num">&lt;0.5%</div><div class="lbl">Unsubscribe rate</div></div>
+            <div class="metric"><div class="num">&lt;0.02%</div><div class="lbl">Spam complaint rate</div></div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <p class="closing-note"><strong style="color:var(--ink);">A note on style:</strong> this sequence's visuals (warm tones, founder photo, soft copy) fit this brand's identity specifically; they're not a template I reuse. What carries over to your brand is the structure underneath: three emails, three distinct jobs (trust, sell, nudge), sequenced so each one earns the next open. Swap in your own visuals and that same logic still holds.</p>
+  </section>
+
+  <section id="audits">
+    <div class="section-head">
+      <p class="num">Audits</p>
+      <h2>Unprompted teardowns</h2>
+    </div>
+    <p style="color:var(--muted); max-width:64ch; margin-bottom:32px;">Three unsolicited lifecycle audits, sent directly to brands whose welcome flows had a clear gap between how good the rest of their brand looked and how generic their first email felt. Findings are text only out of respect for the brands' own assets.</p>
+
+    <div class="audit-card">
+      <p class="meta">MANGOBEARD</p>
+      <h3>Welcome Flow Optimization</h3>
+      <p>The site has a sharp, intentional aesthetic, but the welcome emails default to generic system templates, including a broken merge tag that greets people by their raw email address.</p>
+      <details class="deep">
+        <summary>Read full audit</summary>
+        <div class="deep-body">
+          <h4>Current state: friction and leaks</h4>
+          <ul>
+            <li><strong>The opt-in roadblock:</strong> the confirmation email forces a click-through before any brand story or welcome offer appears, causing drop-off at peak intent.</li>
+            <li><strong>Broken personalization:</strong> the "RAD Score" email has no fallback tag and greets users with their raw email address, which breaks the sense of a personal brand connection.</li>
+            <li><strong>Trigger misalignment:</strong> the loyalty app fires a transactional points notification before the ESP has properly introduced the brand, so the sequence feels automated rather than curated.</li>
+          </ul>
+          <h4>The ideal state: a 3-part flow</h4>
+          <p><strong>Phase 1, Branded Welcome:</strong> replace the cold confirmation box with a hero image matching the site's aesthetic, the founder's own voice pulled from the site copy, and a "Claim Your Welcome Offer" button in place of the generic system wall.</p>
+          <p><strong>Phase 2, The Gear and The Vibe (24 hours):</strong> lead with the brand's 14,000+ customer community to build early trust, then tease the Orange Friday drop's 24-hour window to build a reason to keep opening.</p>
+          <p><strong>Phase 3, The RAD Score Unveil (48 hours):</strong> fix the merge tags and reframe the loyalty points as a VIP club invite rather than an automated transaction.</p>
+          <h4>The quick fix</h4>
+          <p>Fixing the broken merge tags and replacing the generic confirmation wall with a branded HTML welcome flow would lift first-time buyer conversion and protect deliverability.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="audit-card">
+      <p class="meta">ORANIA SKINCARE</p>
+      <h3>Lifecycle Email & Deliverability Teardown</h3>
+      <p>The confirmation email uses a default ESP layout with no domain authentication in place, which puts high-intent subscribers at risk of never seeing a welcome offer at all.</p>
+      <details class="deep">
+        <summary>Read full audit</summary>
+        <div class="deep-body">
+          <h4>Visual audit: current state</h4>
+          <p>Generic ESP layout, default purple background, and unverified domain authentication. High-intent subscribers are dropping off before ever receiving a welcome offer.</p>
+          <h4>Deliverability authentication checklist</h4>
+          <ul>
+            <li><strong>SPF:</strong> authorizes the ESP to send on behalf of the domain, so Gmail doesn't flag messages as forged.</li>
+            <li><strong>DKIM:</strong> adds a cryptographic signature verifying the email wasn't altered in transit.</li>
+            <li><strong>DMARC:</strong> sets domain policy for receiving servers, protecting the brand from spoofing.</li>
+            <li><strong>Custom tracking domain:</strong> replaces shared ESP tracking links with a branded subdomain for a clean domain footprint.</li>
+          </ul>
+          <h4>Optimized subject lines</h4>
+          <p>The default "Website customers: Please Confirm Subscription" line reads as automated and can trigger spam filters. Branded alternatives tested: "Welcome to Orania! Please confirm your email", "Confirm your spot in the Orania family (one quick step)", "Action Required: Verify your email to complete registration".</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="audit-card">
+      <p class="meta">UNWWORN</p>
+      <h3>Welcome Flow Breakdown</h3>
+      <p>The brand voice is the standout of the whole flow, but small inconsistencies, an inconsistent greeting, late social proof, an undated discount code, quietly leave conversion on the table.</p>
+      <details class="deep">
+        <summary>Read full audit</summary>
+        <div class="deep-body">
+          <h4>What was received</h4>
+          <p>Four emails over eight days after signup: a welcome email with the REWEAR code, a cart reminder two days later, a founder story email, and a product email with customer quotes and press mentions on day eight.</p>
+          <h4>What's already working</h4>
+          <p>The voice carries the brand. Lines about pub gardens and packed commuter trains sound like a person, not a template, and the same editorial tone runs through Instagram and the packaging. The welcome email is short, warm, and delivers the code immediately.</p>
+          <h4>Where it could tighten</h4>
+          <ul>
+            <li><strong>One greeting everywhere:</strong> the cart reminder says "Hi Customer" while other emails say "Hi Friend". Capturing a first name at signup and using one fallback keeps the voice consistent.</li>
+            <li><strong>Social proof sooner:</strong> customer quotes and press mentions don't arrive until day eight, after most undecided subscribers have already moved on. A lighter version could sit in the second or third email.</li>
+            <li><strong>Give the code a shape:</strong> REWEAR appears three times with no expiry or next step. A soft window and one low-pressure reminder gives people a reason to use it now.</li>
+            <li><strong>Dark mode:</strong> the black wordmark nearly disappears against a dark background. A light logo variant keeps the brand visible for those readers.</li>
+          </ul>
+          <h4>One direction for the welcome email</h4>
+          <p>Open with the product photography, use the packaging stripe as a border or divider, and keep the existing copy untouched. The code sits in its own boxed line above a single shop button, with a light logo for dark mode. This is a written concept, not a finished design.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <p class="num">Method</p>
+      <h2>Inside a welcome sequence</h2>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div>
+          <h3>The Welcome</h3>
+          <p>Sent immediately. Confirms the subscription, sets expectations, and delivers on whatever was promised at signup.</p>
+          <span class="flow-tag">Sent: instantly</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div>
+          <h3>The Story</h3>
+          <p>Builds trust: why the brand exists, what makes the product different, social proof where it's earned.</p>
+          <span class="flow-tag">Sent: +2 days</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div>
+          <h3>The Nudge</h3>
+          <p>A clear, time-bound reason to buy now, gated to subscribers who haven't already converted.</p>
+          <span class="flow-tag">Sent: +5 days</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="section-head">
+      <p class="num">About</p>
+      <h2>Background</h2>
+    </div>
+    <p>I work across <strong>Klaviyo, Kit, and Mailchimp</strong>, researching what's already working in a brand's category before writing a single email, pulling from the Meta Ad Library, brand audits, and competitor teardown tools to ground every sequence in what's actually converting right now.</p>
+    <p>Every email is production-ready <strong>HTML/CSS</strong>, built to render cleanly across inboxes, with fast turnaround and no shortcuts on quality.</p>
+    <div class="stack">
+      <span class="pill">Klaviyo</span>
+      <span class="pill">Kit</span>
+      <span class="pill">Mailchimp</span>
+      <span class="pill">HubSpot Certified</span>
+      <span class="pill">Notion</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <p class="num">Contact</p>
+      <h2>Let's build your welcome sequence.</h2>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:afuwapeoladapo@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/oladapo-afuwape-509271327" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://twitter.com/bluulifecycle" target="_blank" rel="noopener">Message on X</a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="name">Oladapo Afuwape, Email & Lifecycle Marketing</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/oladapo-afuwape-509271327" target="_blank" rel="noopener">LinkedIn</a>
+      <span style="color:var(--muted);">·</span>
+      <a href="https://twitter.com/bluulifecycle" target="_blank" rel="noopener">@bluulifecycle</a>
+      <span style="color:var(--muted);">·</span>
+      <a href="mailto:afuwapeoladapo@gmail.com">afuwapeoladapo@gmail.com</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
