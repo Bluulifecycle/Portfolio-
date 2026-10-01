@@ -74,12 +74,10 @@
   .case-sub h3{font-size:1.3rem; margin-bottom:6px;}
   .case-sub p.meta{color:var(--gold); font-size:0.85rem; margin-bottom:14px;}
   .case-sub p{color:var(--muted); font-size:0.97rem; max-width:64ch; margin-bottom:14px;}
-  .shots{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin:14px 0;}
-  .shot{width:100%; min-height:160px; border:1px dashed rgba(18,23,43,0.18); border-radius:2px; background:#EEE3D2;
-    display:flex; align-items:center; justify-content:center; text-align:center; padding:10px;
-    color:#6B6150; font-size:0.78rem;}
-  .shot img{width:100%; height:100%; object-fit:cover; border-radius:2px;}
-  .shot.wide{grid-column:1/-1; min-height:220px;}
+  .shots{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin:14px 0; align-items:start;}
+  .shot{width:100%; border-radius:4px; overflow:hidden;}
+  .shot img{display:block; width:100%; height:auto; border-radius:4px;}
+  .shot.wide{grid-column:1/-1;}
 
   details.deep{background:var(--surface); border-radius:2px; margin-bottom:12px;}
   details.deep summary{padding:18px 22px; cursor:pointer; font-family:'Inter',sans-serif; font-weight:600; font-size:0.98rem; list-style:none; display:flex; justify-content:space-between; align-items:center;}
@@ -178,14 +176,21 @@
 
     <div class="case-sub">
       <h3>1. The Opt-In Experience</h3>
-      <p>Minimal form fields built to lower conversion friction while showcasing core proof points.</p>
+      <p>Minimal form fields built to lower conversion friction. The page backs each form with proof points: 100% natural ingredients, visible results in 2 weeks, and 50+ happy customers.</p>
       <div class="shots">
-        <div class="shot"><img src="images/case-optin-1.JPG" alt="Opt-in form 1"></div>
-        <div class="shot"><img src="images/case-optin-2.jpg" alt="Opt-in form 2"></div>
-        <div class="shot"><img src="images/case-optin-3.jpg" alt="Opt-in form 3"></div>
-        <div class="shot"><img src="images/case-optin-4.jpg" alt="Opt-in form 4"></div>
-        <div class="shot"><img src="images/case-optin-5.JPG" alt="Opt-in form 5"></div>
+        <div class="shot"><img src="images/case-optin-1.JPG" alt="Opt-in form: Your Glow Starts Here, 10% off the first order"></div>
+        <div class="shot"><img src="images/case-optin-5.JPG" alt="Opt-in form with founder quote and 5.0 star rating"></div>
       </div>
+      <details class="deep">
+        <summary>See the supporting page sections (product, proof points, reviews)</summary>
+        <div class="deep-body">
+          <div class="shots">
+            <div class="shot"><img src="images/case-optin-2.jpg" alt="Landing page section: product introduction" loading="lazy"></div>
+            <div class="shot"><img src="images/case-optin-3.jpg" alt="Landing page section: 100% natural ingredients and visible results in 2 weeks" loading="lazy"></div>
+            <div class="shot"><img src="images/case-optin-4.jpg" alt="Landing page section: 50+ happy customers" loading="lazy"></div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="case-sub">
@@ -218,7 +223,7 @@
           <h4>Sequence mechanics</h4>
           <ul>
             <li><strong>Trigger:</strong> form submission adds the subscriber to the welcome sequence.</li>
-            <li><strong>Cadence:</strong> Email 1 immediately → Email 2 at +2 days → Email 3 at +2 days.</li>
+            <li><strong>Cadence:</strong> Email 1 immediately → Email 2 on day 2 → Email 3 on day 4.</li>
             <li><strong>Exit logic:</strong> buyer status removes customers from non-buyer incentive reminders.</li>
             <li><strong>Consent & deliverability:</strong> double opt-in verifies consent and keeps hard bounces under 0.5%, protecting sender reputation.</li>
           </ul>
@@ -286,44 +291,50 @@
     <div class="audit-card">
       <p class="meta">MANGOBEARD</p>
       <h3>Welcome Flow Optimization</h3>
-      <p>The site has a sharp, intentional aesthetic, but the welcome emails default to generic system templates, including a broken merge tag that greets people by their raw email address.</p>
+      <p>The site has a sharp, intentional aesthetic, but the welcome emails default to system templates, including a broken merge tag that greets people by their raw email address.</p>
       <details class="deep">
         <summary>Read full audit</summary>
         <div class="deep-body">
           <h4>Current state: friction and leaks</h4>
           <ul>
-            <li><strong>The opt-in roadblock:</strong> the confirmation email forces a click-through before any brand story or welcome offer appears, causing drop-off at peak intent.</li>
+            <li><strong>The opt-in step:</strong> the confirmation email forces a click-through before any brand story or welcome offer appears, causing drop-off at peak intent.</li>
             <li><strong>Broken personalization:</strong> the "RAD Score" email has no fallback tag and greets users with their raw email address, which breaks the sense of a personal brand connection.</li>
             <li><strong>Trigger misalignment:</strong> the loyalty app fires a transactional points notification before the ESP has properly introduced the brand, so the sequence feels automated rather than curated.</li>
           </ul>
           <h4>The ideal state: a 3-part flow</h4>
-          <p><strong>Phase 1, Branded Welcome:</strong> replace the cold confirmation box with a hero image matching the site's aesthetic, the founder's own voice pulled from the site copy, and a "Claim Your Welcome Offer" button in place of the generic system wall.</p>
+          <p><strong>Phase 1, Branded Welcome:</strong> replace the default confirmation email with a hero image matching the site's aesthetic, the founder's own voice pulled from the site copy, and a "Claim Your Welcome Offer" button in place of the default system message.</p>
           <p><strong>Phase 2, The Gear and The Vibe (24 hours):</strong> lead with the brand's 14,000+ customer community to build early trust, then tease the Orange Friday drop's 24-hour window to build a reason to keep opening.</p>
           <p><strong>Phase 3, The RAD Score Unveil (48 hours):</strong> fix the merge tags and reframe the loyalty points as a VIP club invite rather than an automated transaction.</p>
           <h4>The quick fix</h4>
-          <p>Fixing the broken merge tags and replacing the generic confirmation wall with a branded HTML welcome flow would lift first-time buyer conversion and protect deliverability.</p>
+          <p>Fixing the broken merge tags and replacing the generic confirmation wall with a branded HTML welcome flow should lift first-time buyer conversion and protect deliverability.</p>
         </div>
       </details>
     </div>
 
     <div class="audit-card">
-      <p class="meta">ORANIA SKINCARE</p>
-      <h3>Lifecycle Email & Deliverability Teardown</h3>
-      <p>The confirmation email uses a default ESP layout with no domain authentication in place, which puts high-intent subscribers at risk of never seeing a welcome offer at all.</p>
+      <p class="meta">SOVE</p>
+      <h3>One Email Doing the Work of Three</h3>
+      <p>A premium sleepwear brand sends a single welcome email with a flat discount, then goes quiet. On one of two test sends, Gmail also flagged that same email as unauthenticated.</p>
       <details class="deep">
         <summary>Read full audit</summary>
         <div class="deep-body">
-          <h4>Visual audit: current state</h4>
-          <p>Generic ESP layout, default purple background, and unverified domain authentication. High-intent subscribers are dropping off before ever receiving a welcome offer.</p>
-          <h4>Deliverability authentication checklist</h4>
+          <h4>What's already working</h4>
+          <p>The wordmark and lifestyle photo set the right tone, and one of the two sends reached the inbox cleanly.</p>
+          <h4>The sequence stops after email one</h4>
+          <p>A thank-you note and a flat code, then nothing further. There is no story, no product education and no second or third touch, so anyone who doesn't buy off the first email is never followed up with.</p>
+          <h4>The discount has no reason to act now</h4>
+          <p>A flat 10% code with no expiration or countdown gives a new subscriber every reason to sit on it. Gating a stronger offer behind non-purchase, rather than handing away margin in email one, is the harder-working version.</p>
+          <h4>The brand story isn't in the email yet</h4>
+          <p>One lifestyle photo, a wordmark and a single line of copy. No fabric or sourcing story, no bestsellers and no social proof to earn a premium price point from someone who just met the brand.</p>
+          <h4>The same email landed in spam</h4>
+          <p>Two sends of the identical welcome email: one clean inbox delivery, one flagged by Gmail as unauthenticated. That points to an inconsistent SPF, DKIM and DMARC setup, and a welcome flow only works when every send reaches the inbox.</p>
+          <h4>Recommended next step</h4>
           <ul>
-            <li><strong>SPF:</strong> authorizes the ESP to send on behalf of the domain, so Gmail doesn't flag messages as forged.</li>
-            <li><strong>DKIM:</strong> adds a cryptographic signature verifying the email wasn't altered in transit.</li>
-            <li><strong>DMARC:</strong> sets domain policy for receiving servers, protecting the brand from spoofing.</li>
-            <li><strong>Custom tracking domain:</strong> replaces shared ESP tracking links with a branded subdomain for a clean domain footprint.</li>
+            <li>Build a 3-part welcome sequence with dynamic discount gating.</li>
+            <li>Set up and verify SPF and DKIM for the exact domain the email sends from.</li>
+            <li>Publish a DMARC record and confirm From-domain alignment with DKIM.</li>
+            <li>Confirm the fix with a test send through mail-tester.com or Google Postmaster Tools.</li>
           </ul>
-          <h4>Optimized subject lines</h4>
-          <p>The default "Website customers: Please Confirm Subscription" line reads as automated and can trigger spam filters. Branded alternatives tested: "Welcome to Orania! Please confirm your email", "Confirm your spot in the Orania family (one quick step)", "Action Required: Verify your email to complete registration".</p>
         </div>
       </details>
     </div>
@@ -372,7 +383,7 @@
         <div>
           <h3>The Story</h3>
           <p>Builds trust: why the brand exists, what makes the product different, social proof where it's earned.</p>
-          <span class="flow-tag">Sent: +2 days</span>
+          <span class="flow-tag">Sent: day 2</span>
         </div>
       </div>
       <div class="flow-step">
@@ -380,7 +391,7 @@
         <div>
           <h3>The Nudge</h3>
           <p>A clear, time-bound reason to buy now, gated to subscribers who haven't already converted.</p>
-          <span class="flow-tag">Sent: +5 days</span>
+          <span class="flow-tag">Sent: day 4</span>
         </div>
       </div>
     </div>
