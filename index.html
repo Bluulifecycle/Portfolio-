@@ -109,6 +109,16 @@
     overflow:hidden; margin-bottom:22px;}
   .avatar img{width:100%; height:100%; object-fit:cover;}
 
+
+  .case-sub .flow-step h3{font-size:1.05rem; font-family:'Inter',sans-serif; font-weight:600; margin-bottom:6px;}
+  .case-sub .flow-step p{margin-bottom:0;}
+  .variants{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:14px 0 22px;}
+  .variant{background:#F2EEE8; border-radius:12px; padding:22px;}
+  .case-sub .variant p{color:#2B2320; font-size:0.95rem; max-width:none; margin-bottom:0;}
+  .case-sub .variant p.who{color:#8A6F5D; font-size:0.8rem; margin-bottom:8px;}
+  .btn-mock{display:inline-block; margin-top:14px; background:#121212; color:#fff; border-radius:999px; padding:10px 20px; font-size:0.85rem; font-weight:600;}
+  .card a.more{display:inline-block; margin-top:12px; color:var(--gold); font-size:0.9rem; text-decoration:none;}
+
   @media(max-width:720px){
     .services{grid-template-columns:1fr;}
     header nav{display:none;}
@@ -157,6 +167,7 @@
       <div class="card">
         <h3>Discount Gating</h3>
         <p>Dynamic offer logic so discounts go to the subscribers who need the nudge, not everyone, and not forever.</p>
+        <a class="more" href="#gating">See the gating design</a>
       </div>
     </div>
   </section>
@@ -198,22 +209,80 @@
 
       <p class="meta" style="margin-top:20px;">EMAIL 1 — Brand Discovery &amp; Founder Welcome</p>
       <p><strong style="color:var(--ink);">Subject:</strong> Welcome to Terra & Co.<br><strong style="color:var(--ink);">Preview:</strong> Here's why we started Terra&Co.</p>
-      <p>Matched the email templates to the landing page (same rounded corners, same button style) so the experience feels continuous from click to inbox. Used double opt-in and held the discount code until after verification, which keeps the list clean and stops the code from being scraped before someone actually subscribes. Email 1 leads with the founder's story and the product itself before mentioning the discount, so the brand feels personal rather than promotional from the first message.</p>
+      <p>Matched the email templates to the opt-in form (same rounded corners, same button style, same product visual) so the experience feels continuous from click to inbox. Email 1 leads with the founder's story and the product itself before mentioning the discount, so the brand feels personal rather than promotional from the first message. The 10% code promised on the form then arrives in one highlighted block with a single CTA. In the flow, each subscriber is tagged as consent-pending (double opt-in) before the series starts.</p>
       <div class="shots"><div class="shot wide"><img src="images/case-email1.jpg" alt="Email 1 screenshot"></div></div>
 
       <p class="meta" style="margin-top:28px;">EMAIL 2 — Hero Product Focus &amp; Social Proof</p>
       <p><strong style="color:var(--ink);">Subject:</strong> The one bottle that replaced two.<br><strong style="color:var(--ink);">Preview:</strong> Lisa's bathroom shelf used to look like a Sephora aisle.</p>
-      <p>Shifts from brand intro to hero-product positioning, introducing the Daily Glow Serum alongside real customer reviews to address purchase hesitation, highlight routine simplification, and drive consideration through a dedicated CTA.</p>
+      <p>Shifts from brand intro to hero-product positioning, introducing the Daily Glow Serum alongside customer reviews to address purchase hesitation, highlight routine simplification, and drive consideration through a dedicated CTA.</p>
       <div class="shots"><div class="shot wide"><img src="images/case-email2.jpg" alt="Email 2 screenshot"></div></div>
 
       <p class="meta" style="margin-top:28px;">EMAIL 3 — Offer Introduction &amp; Reassurance Close</p>
       <p><strong style="color:var(--ink);">Subject:</strong> Still thinking it over?<br><strong style="color:var(--ink);">Preview:</strong> Your 10% off hasn't gone anywhere.</p>
-      <p>Targets non-converters still in the sequence 4 days post-signup: a gentle nudge to redeem the 10% discount promised on the opt-in confirmation before the welcome window closes.</p>
+      <p>Written for subscribers who haven't bought yet: a gentle nudge, 4 days after signup, that the 10% code from Email 1 is still active. The sample build runs this email as part of the main series; the discount gating section below shows how I'd limit it to non-buyers in a live account.</p>
       <div class="shots"><div class="shot wide"><img src="images/case-email3.jpg" alt="Email 3 screenshot"></div></div>
     </div>
 
+    <div class="case-sub" id="gating">
+      <h3>3. Discount Gating</h3>
+      <p>The 10% offer shouldn't go to everyone, and it shouldn't last forever. This is the conditional layer I'd add to the sequence in a live account. It uses the same tags and the Status: Customer segment already in the flow, and works the same way in Kit, Klaviyo, or Mailchimp. The automation map and segmentation setup are in sections 4–6 below.</p>
+      <div class="case-note"><strong>Design note:</strong> the sample build above runs as a single path with the Status: Customer segment set up. The rules and email variants below are the specified gating logic, shown as mockups, not results from a running automation.</div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div>
+            <h3>Signup: no code yet</h3>
+            <p>The form promises the offer, but nothing with a code goes out until consent is confirmed.</p>
+            <span class="flow-tag">Tag: [Consent] DOI - Pending</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div>
+            <h3>Consent confirmed: Email 1 releases WELCOME10</h3>
+            <p>Only confirmed subscribers receive the code, so unverified addresses never get a discount.</p>
+            <span class="flow-tag">Tag: [Flow] Welcome - Active</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div>
+            <h3>Before Email 3: check purchase status</h3>
+            <p>Subscribers with the Status: Customer tag exit the reminder. Everyone else gets "Your code is still active."</p>
+            <span class="flow-tag">Condition: has Status: Customer tag?</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div>
+            <h3>Welcome window closes: the code stops being promoted</h3>
+            <p>The code expires with the welcome window, and the subscriber moves to regular newsletters, so first-order discounts don't run indefinitely.</p>
+            <span class="flow-tag">Tag: [Flow] Welcome - Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="meta" style="margin-top:28px;">Same email, different offer block</p>
+      <p>Conditional content swaps one block inside the email, based on purchase status. The rest of the email stays identical, so there is still one email to maintain.</p>
+      <div class="variants">
+        <div class="variant">
+          <p class="who">Non-buyer sees</p>
+          <p>As promised, use code <strong>WELCOME10</strong> for <strong>10% off</strong> your first order.</p>
+          <span class="btn-mock">Explore The Collection</span>
+        </div>
+        <div class="variant">
+          <p class="who">Existing customer sees</p>
+          <p>Thanks for being a customer. Here's how to get the most from your Daily Glow Serum.</p>
+          <span class="btn-mock">See usage tips</span>
+        </div>
+      </div>
+
+      <p>Why it matters: discounts go to the people who need the nudge, margin isn't given away on buyers who would have purchased anyway, and a code that expires can't circulate indefinitely.</p>
+    </div>
+
     <div class="case-sub">
-      <h3>3–5. Architecture, Segmentation &amp; Results Targets</h3>
+      <h3>4–6. Architecture, Segmentation &amp; Results Targets</h3>
       <p>The deeper strategy behind the sequence. Tap to expand any section.</p>
 
       <details class="deep">
@@ -224,8 +293,8 @@
           <ul>
             <li><strong>Trigger:</strong> form submission adds the subscriber to the welcome sequence.</li>
             <li><strong>Cadence:</strong> Email 1 immediately → Email 2 on day 2 → Email 3 on day 4.</li>
-            <li><strong>Exit logic:</strong> buyer status removes customers from non-buyer incentive reminders.</li>
-            <li><strong>Consent & deliverability:</strong> double opt-in verifies consent and keeps hard bounces under 0.5%, protecting sender reputation.</li>
+            <li><strong>Exit logic (designed):</strong> buyer status removes customers from non-buyer incentive reminders. See the discount gating section for the full rules.</li>
+            <li><strong>Consent & deliverability:</strong> double opt-in verifies consent, with a target of keeping hard bounces under 0.5% to protect sender reputation.</li>
           </ul>
           <h4>Deliverability & compliance</h4>
           <p>Mobile-first, single-column templates with live HTML text and a balanced text-to-image ratio. Image-heavy emails often get routed to Gmail's Promotions tab, so this was a deliberate choice to stay in the primary inbox. CAN-SPAM/GDPR considerations included sender ID, physical address, unsubscribe function, and consent handling.</p>
@@ -236,7 +305,7 @@
         <summary>Segmentation & Lifecycle Strategy</summary>
         <div class="deep-body">
           <div class="shots"><div class="shot wide"><img src="images/case-segmentation.jpg" alt="Segmentation setup"></div></div>
-          <h4>Primary segments</h4>
+          <h4>Primary segments (strategy; the Status: Customer segment is built in the sample)</h4>
           <ul>
             <li><strong>New Subscribers:</strong> entered through the 10% first-order offer</li>
             <li><strong>Engaged Non-Buyers:</strong> interacted with the sequence, haven't purchased</li>
