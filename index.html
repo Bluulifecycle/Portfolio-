@@ -119,6 +119,36 @@
   .btn-mock{display:inline-block; margin-top:14px; background:#121212; color:#fff; border-radius:999px; padding:10px 20px; font-size:0.85rem; font-weight:600;}
   .card a.more{display:inline-block; margin-top:12px; color:var(--gold); font-size:0.9rem; text-decoration:none;}
 
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  .jump{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:40px;}
+  .jump span{color:var(--muted); font-size:0.88rem; margin-right:4px;}
+  .jump a{border:1px solid var(--line); padding:8px 16px; border-radius:20px; font-size:0.88rem; color:var(--ink); text-decoration:none;}
+  .jump a:hover, .jump a:focus-visible{border-color:var(--gold); color:var(--gold);}
+  .concept{margin-top:56px;}
+  .concept:first-of-type{margin-top:0;}
+  .concept + .concept{border-top:1px solid var(--line); padding-top:56px;}
+  .concept-hero{display:block; width:100%; height:auto; border-radius:6px; margin-bottom:28px;}
+  .concept h3.concept-title{font-size:1.6rem; margin-bottom:6px;}
+  .concept p.meta{color:var(--gold); font-size:0.85rem; margin-bottom:16px;}
+  .bg-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-bottom:8px;}
+  .bg-grid div{background:var(--surface); padding:20px 22px; border-radius:2px;}
+  .bg-grid h4, .concept h4.sub{font-family:'Inter',sans-serif; font-weight:600; font-size:0.95rem; margin-bottom:6px;}
+  .bg-grid p{color:var(--muted); font-size:0.94rem;}
+  .concept h4.sub{font-size:1.05rem; margin:40px 0 4px;}
+  .concept ul.measure{padding-left:20px; color:var(--muted); font-size:0.95rem; max-width:64ch;}
+  .concept ul.measure li{margin-bottom:6px;}
+  .email-ref{margin-top:40px;}
+  .email-frame{position:relative; max-width:400px; margin:16px auto 0; max-height:540px; overflow:hidden; border-radius:10px; background:#fff; transition:max-height .5s ease;}
+  .email-frame img{display:block; width:100%; height:auto;}
+  .email-frame::after{content:''; position:absolute; left:0; right:0; bottom:0; height:150px; background:linear-gradient(rgba(18,23,43,0),var(--bg)); pointer-events:none;}
+  .email-frame.open{max-height:7000px;}
+  .email-frame.open::after{display:none;}
+  .email-toggle{display:block; margin:18px auto 0; background:none; cursor:pointer; font-family:'Inter',sans-serif; color:var(--ink);}
+  .email-toggle:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  @media (prefers-reduced-motion:reduce){.email-frame{transition:none;}}
+
   @media(max-width:720px){
     .services{grid-template-columns:1fr;}
     header nav{display:none;}
@@ -138,6 +168,7 @@
     <div class="logo">Oladapo Afuwape<span>.</span></div>
     <nav>
       <a href="#case-study">Case Study</a>
+      <a href="#concepts">Concept Work</a>
       <a href="#audits">Audits</a>
       <a href="#work">How I Work</a>
       <a href="#services">Services</a>
@@ -155,27 +186,13 @@
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/oladapo-afuwape-509271327" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-ghost" href="https://twitter.com/bluulifecycle" target="_blank" rel="noopener">Twitter</a>
     </div>
-  </section>
-
-  <section id="services">
-    <div class="section-head">
-      <p class="num">Services</p>
-      <h2>What I build</h2>
-    </div>
-    <div class="services">
-      <div class="card">
-        <h3>Welcome Sequences</h3>
-        <p>3-part sequences engineered to convert a new subscriber into a first purchase, timed, tested, and written to match your brand voice.</p>
-      </div>
-      <div class="card">
-        <h3>Lifecycle Automation</h3>
-        <p>Post-purchase, browse abandonment, win-back, and VIP flows that run quietly in the background and keep revenue compounding.</p>
-      </div>
-      <div class="card">
-        <h3>Discount Gating</h3>
-        <p>Dynamic offer logic so discounts go to the subscribers who need the nudge, not everyone, and not forever.</p>
-        <a class="more" href="#gating">See the gating design</a>
-      </div>
+    <div class="jump" role="navigation" aria-label="Jump to a section">
+      <span>Jump to</span>
+      <a href="#case-study">Case Study</a>
+      <a href="#concepts">Concept Work</a>
+      <a href="#audits">Audits</a>
+      <a href="#work">How I Work</a>
+      <a href="#services">Services</a>
     </div>
   </section>
 
@@ -357,6 +374,73 @@
     <p class="closing-note"><strong style="color:var(--ink);">A note on style:</strong> this sequence's visuals (warm tones, founder photo, soft copy) fit this brand's identity specifically; they're not a template I reuse. What carries over to your brand is the structure underneath: three emails, three distinct jobs (trust, sell, nudge), sequenced so each one earns the next open. Swap in your own visuals and that same logic still holds.</p>
   </section>
 
+  <section id="concepts">
+    <div class="section-head">
+      <p class="num">Concept Work</p>
+      <h2>Welcome email concepts</h2>
+    </div>
+    <p style="color:var(--muted); max-width:64ch; margin-bottom:44px;">Two welcome emails I built on my own for brands I like. Each one starts with a brief and a goal and then walks through what every block is doing. I’m not claiming any results here. This is about the thinking.</p>
+
+    <article class="concept" id="unwworn">
+      <img class="concept-hero" src="images/concept-unwworn-hero.jpg" alt="Breakdown of the UNWWORN welcome email concept showing the code block, the two product options and the founder note">
+      <h3 class="concept-title">UNWWORN: welcome email</h3>
+      <p class="meta">Self-initiated concept · Fragrance for clothes · Discount welcome</p>
+      <div class="case-note"><strong>Note:</strong> This is a self-initiated concept built from UNWWORN’s public brand assets. It isn’t affiliated with the brand and it isn’t a critique of anything they send. The code shown is an example.</div>
+      <div class="bg-grid">
+        <div><h4>Brief</h4><p>A welcome email for a fragrance-for-clothes brand that promised new subscribers 10% off. The subscriber opened it to get the code.</p></div>
+        <div><h4>Goal</h4><p>Get the code into their hands straight away and make buying easy. Then introduce the founder so the next email has a voice behind it.</p></div>
+      </div>
+      <h4 class="sub">The thinking, block by block</h4>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><div><h3>The code</h3><p>The code comes first in its own box on a photo of the bottle sitting in a shirt pocket. The photo shows what the product is for before any copy does. The deadline is set per subscriber through the ESP. Everyone gets five days from their own signup so a line like “ends Friday at midnight” is always true for the person reading it. The code is also generated and gated per subscriber. It works once and can’t be passed around.</p></div></div>
+        <div class="flow-step"><div class="flow-num">2</div><div><h3>The choice</h3><p>Two sizes labelled Try first and Best value. The discounted price is already worked out with the original crossed out so nobody has to do the maths. A subscriber who is unsure can start small and one who is sold can go big. Making that decision easier for the customer tends to help conversion.</p></div></div>
+        <div class="flow-step"><div class="flow-num">3</div><div><h3>The founder</h3><p>A polaroid and a short note from Meg with a promise that a second email will explain why she started the brand. It sits last because the subscriber came for the code. By the time they reach the note they already have what they came for and the promise gives the next email a reason to be opened.</p></div></div>
+        <div class="flow-step"><div class="flow-num">4</div><div><h3>The sign-off</h3><p>The Instagram handle and a relaxed opt-out line: “Not an email person? Fair enough.” It keeps the brand’s tone going to the very end. An easy way out also tends to mean fewer spam complaints.</p></div></div>
+      </div>
+      <h4 class="sub">What I’d measure</h4>
+      <ul class="measure">
+        <li>How many people use the code within their five days</li>
+        <li>The split between the 30ml and 100ml buttons</li>
+        <li>Opens on the founder email two days later</li>
+      </ul>
+      <div class="email-ref">
+        <h4 class="sub" style="margin-top:0;">The full email</h4>
+        <div class="email-frame" id="unwworn-frame"><img src="images/concept-unwworn-email.jpg" alt="Full UNWWORN welcome email concept" loading="lazy"></div>
+        <button class="btn btn-ghost email-toggle" type="button" aria-expanded="false" aria-controls="unwworn-frame">See the full email</button>
+      </div>
+    </article>
+
+    <article class="concept" id="skipd">
+      <img class="concept-hero" src="images/concept-skipd-hero.jpg" alt="Step-by-step breakdown of the SKIPD waitlist welcome email concept in five blocks">
+      <h3 class="concept-title">SKIPD: waitlist welcome email</h3>
+      <p class="meta">Self-initiated concept · Skincare · Waitlist welcome</p>
+      <div class="case-note"><strong>Note:</strong> This is a self-initiated concept showing what a SKIPD waitlist welcome email could look like. It’s built from the brand’s public look and voice. It isn’t affiliated with SKIPD and the copy is mine.</div>
+      <div class="bg-grid">
+        <div><h4>Brief</h4><p>A welcome email for a skincare waitlist. The subscriber has only given an email address and there is nothing to buy yet.</p></div>
+        <div><h4>Goal</h4><p>Confirm the signup and set the brand voice. Build some anticipation for launch and make it easy to reply.</p></div>
+      </div>
+      <h4 class="sub">The thinking, block by block</h4>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><div><h3>The confirmation</h3><p>The email opens with “Done.” and asks nothing of the subscriber. That is the brand idea in action: skip the steps. The three tags underneath sum up the promise at a glance so someone who stops reading there still gets it.</p></div></div>
+        <div class="flow-step"><div class="flow-num">2</div><div><h3>The hook</h3><p>One line about routines lasting about five days. Most people have been through that cycle so they nod along before the brand has said anything about itself. It also sets the product up as the answer to something they already know.</p></div></div>
+        <div class="flow-step"><div class="flow-num">3</div><div><h3>The teaser</h3><p>A waitlist has no product to sell yet. The polaroid of the product in a back pocket gives the subscriber a glimpse without the full reveal. The “loading...” label turns the wait into something to look forward to and gives them a reason to open the next email.</p></div></div>
+        <div class="flow-step"><div class="flow-num">4</div><div><h3>The promise</h3><p>Three numbered things set expectations early: early access, a little something at launch and a short email cadence. The last one matters most. People on a waitlist haven’t bought anything yet so knowing they won’t be flooded makes staying on the list an easier call.</p></div></div>
+        <div class="flow-step"><div class="flow-num">5</div><div><h3>The reply-driver</h3><p>A soft button to Instagram and then a P.S. asking which skincare step they always skip. Anyone can answer that in one line so replying takes almost no effort. Replies are a good signal for a new sender and they give the brand its audience’s own words to use later.</p></div></div>
+      </div>
+      <h4 class="sub">What I’d measure</h4>
+      <ul class="measure">
+        <li>Reply rate with the P.S. question against a version without it</li>
+        <li>Clicks on the Instagram button against a plain text link</li>
+        <li>Opens on the next email to see if the teaser carries over</li>
+      </ul>
+      <div class="email-ref">
+        <h4 class="sub" style="margin-top:0;">The full email</h4>
+        <div class="email-frame" id="skipd-frame"><img src="images/concept-skipd-email.jpg" alt="Full SKIPD waitlist welcome email concept" loading="lazy"></div>
+        <button class="btn btn-ghost email-toggle" type="button" aria-expanded="false" aria-controls="skipd-frame">See the full email</button>
+      </div>
+    </article>
+  </section>
+
   <section id="audits">
     <div class="section-head">
       <p class="num">Audits</p>
@@ -473,6 +557,28 @@
     </div>
   </section>
 
+  <section id="services">
+    <div class="section-head">
+      <p class="num">Services</p>
+      <h2>What I build</h2>
+    </div>
+    <div class="services">
+      <div class="card">
+        <h3>Welcome Sequences</h3>
+        <p>3-part sequences engineered to convert a new subscriber into a first purchase, timed, tested, and written to match your brand voice.</p>
+      </div>
+      <div class="card">
+        <h3>Lifecycle Automation</h3>
+        <p>Post-purchase, browse abandonment, win-back, and VIP flows that run quietly in the background and keep revenue compounding.</p>
+      </div>
+      <div class="card">
+        <h3>Discount Gating</h3>
+        <p>Dynamic offer logic so discounts go to the subscribers who need the nudge, not everyone, and not forever.</p>
+        <a class="more" href="#gating">See the gating design</a>
+      </div>
+    </div>
+  </section>
+
   <section class="about">
     <div class="section-head">
       <p class="num">About</p>
@@ -512,5 +618,16 @@
     </div>
   </footer>
 </div>
+<script>
+document.querySelectorAll('.email-toggle').forEach(function(b){
+  b.addEventListener('click',function(){
+    var f=document.getElementById(b.getAttribute('aria-controls'));
+    var open=f.classList.toggle('open');
+    b.setAttribute('aria-expanded',open);
+    b.textContent=open?'Show less':'See the full email';
+    if(!open){f.scrollIntoView({block:'start',behavior:'smooth'});}
+  });
+});
+</script>
 </body>
 </html>
